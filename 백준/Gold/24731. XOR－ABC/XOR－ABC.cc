@@ -30,7 +30,7 @@ int main()
     fio();
 
     ll K; cin >> K;
-    ll ans = (fp(2,K)-1) % mod * (fp(2,K)-2 )%mod;
+    ll ans = (fp(6,mod-2) % mod * (fp(2,K) % mod -1 )) % mod * (fp(2,K) % mod -2) ;
     ans %= mod;
-    cout << (ans / 6);
+    cout << ans;
 }
