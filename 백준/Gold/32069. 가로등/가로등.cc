@@ -13,8 +13,9 @@ int main()
 {
     fio();
 
-    ll L,N,K; cin >> L >> N >> K;
+    ll L,N,K; 
 
+    cin >> L >> N >> K;
     ll A[303030];
     FOR(i,N+1,1) cin >> A[i];
 
@@ -23,16 +24,15 @@ int main()
 
     if(A[1] > 0) line.push_back(A[1]);
     if(A[N] < L) line.push_back(L - A[N]); 
-    sort(all(line));
     
     FOR(i,N,1)
     {
         ll diff = A[i+1] - A[i] - 1LL;
-
+        
         if(diff & 1)
         {
             line.push_back(diff / 2LL + 1LL);
-            line.push_back(diff / 2LL);
+            if(diff != 1) line.push_back(diff / 2LL);
         }
         
         else 
@@ -41,6 +41,8 @@ int main()
             line.push_back(diff / 2LL);
         }
     }
+    sort(all(line));
+    
     ans[0] = min(K,N);
     K -= min(K, N);
 
