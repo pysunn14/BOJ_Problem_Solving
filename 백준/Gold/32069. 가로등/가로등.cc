@@ -49,15 +49,7 @@ int main()
     
     while (K > 0)
     {
-        ll lo = pointer, hi = line.size();
-        // line 값 중 now보다 커지는 애들 중 최소 포인터로 설정
-        while (lo + 1 < hi)
-        {
-            if(line[mid] >= now) hi = mid;
-            else lo = mid;
-        }
-        pointer = lo;
-        if(line[lo] < now) pointer = hi;
+        while (line[pointer] < now && pointer < line.size()) pointer++;
         
         // 현재 line 개수만큼 vector에 추가 
         ans[now] = min(K, (ll)line.size() - pointer);
